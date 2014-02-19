@@ -1,0 +1,3 @@
+ofxXmlSettings
+ofxCameraMove
+ofxTweener

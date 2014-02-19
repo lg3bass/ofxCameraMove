@@ -428,6 +428,7 @@
 					../../../addons/ofxLEDs/libs,
 					../../../addons/ofxLEDs/src,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
@@ -463,6 +464,7 @@
 					../../../addons/ofxLEDs/libs,
 					../../../addons/ofxLEDs/src,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
