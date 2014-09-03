@@ -78,7 +78,7 @@ vector<string> ofxCameraMove::loadString(string folder){
     
     for(int i = 0; i < (int)dir.size(); i++){
         stringTemp.push_back(dir.getPath(i));
-        cout << " loading " << dir.getPath(i) << endl;
+        //cout << " loading " << dir.getPath(i) << endl;
     }
     
     return stringTemp;
@@ -185,7 +185,10 @@ void ofxCameraMove::cutNow(int cameraNumber){
 
 //--------------------------------------------------------------
 void ofxCameraMove::keyPressed(ofKeyEventArgs &args) {
-    
+
+    //20140621 TAKEN OUT - accidentally hitting this and messing things up.
+    //Perhaps I take this out later.
+    /*
     if(args.key =='1'){
         updateView(0);
     }
@@ -213,6 +216,7 @@ void ofxCameraMove::keyPressed(ofKeyEventArgs &args) {
     if(args.key =='9'){
         updateView(8);
     }
+     */
 }
 
 //--------------------------------------------------------------
@@ -230,7 +234,7 @@ void ofxCameraMove::newView(){
     camSpinner = target.size()-1;
     currentIdx = target.size()-1;//reset to base cam.
 
-    cout << "NEW Camera View: " + ofToString(target.size()) << endl;
+    //cout << "NEW Camera View: " + ofToString(target.size()) << endl;
     //cout << "viewCount.size(" << target.size() << "), " << "camSpinner:" << ofToString(camSpinner) << ",index:" << ofToString(target.size()-1) << endl;
     
     isSettingCam = false;// turn off on-screen reminder to save.
@@ -293,6 +297,19 @@ string ofxCameraMove::saveView(int camNum){
     
 }
 
+//RESET the view to 0
+//--------------------------------------------------------------
+void ofxCameraMove::zeroView(float time){
+    if(target.size()!=0){
+        camSpinner = 0;
+        currentIdx = 0;
+        cout << "viewCount.size(" << target.size() << "), " << "camSpinner:" << ofToString(camSpinner) << ",index:" << ofToString(abs(camSpinner) % target.size()) << endl;
+        tweenNow(currentIdx, time);
+        isSettingCam = false;
+    }
+}
+
+
 //--------------------------------------------------------------
 void ofxCameraMove::nextView(float time){
     if(target.size()!=0){
@@ -315,6 +332,7 @@ void ofxCameraMove::prevView(float time){
     }
 }
 
+//--------------------------------------------------------------
 void ofxCameraMove::setTweenType(int _tweenType){
     tweenType = _tweenType;
     

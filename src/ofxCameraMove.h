@@ -12,7 +12,7 @@
 #include "ofxXmlSettings.h"
 #include "ofxTweener.h"
 
-#define numberSaveFiles 10 // this is problem want to make is so a can set the array in code can you help!!???
+#define numberSaveFiles 20 // this is problem want to make is so a can set the array in code can you help!!???
 
 class ofxCameraMove {
 	
@@ -35,6 +35,7 @@ public:
     string saveView(int camNum);
     bool isSettingCam;
     
+    void zeroView(float time=2.0);
     void nextView(float time=2.0);
     void prevView(float time=2.0);
     
