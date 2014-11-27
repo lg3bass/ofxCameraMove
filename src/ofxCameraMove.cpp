@@ -314,7 +314,7 @@ void ofxCameraMove::zeroView(float time){
 void ofxCameraMove::nextView(float time){
     if(target.size()!=0){
         ++camSpinner;
-        //cout << "viewCount.size(" << target.size() << "), " << "camSpinner:" << ofToString(camSpinner) << ",index:" << ofToString(abs(camSpinner) % target.size()) << endl;
+        cout << "viewCount.size(" << target.size() << "), " << "camSpinner:" << ofToString(camSpinner) << ",index:" << ofToString(abs(camSpinner) % target.size()) << endl;
         currentIdx = abs(camSpinner) % target.size();
         tweenNow(currentIdx, time);
         isSettingCam = false;
@@ -322,10 +322,23 @@ void ofxCameraMove::nextView(float time){
 }
 
 //--------------------------------------------------------------
+void ofxCameraMove::gotoSelectView(int index, float time){
+    if(target.size()!=0){
+        if(index < target.size()){
+            currentIdx = index;
+            tweenNow(currentIdx, time);
+            isSettingCam = false;
+        } else {
+            cout << "there are only " << target.size() << " cameras." << endl;
+        }
+    }
+}
+
+//--------------------------------------------------------------
 void ofxCameraMove::prevView(float time){
     if(target.size()!=0){
         --camSpinner;
-        //cout << "viewCount.size(" << target.size() << "), " << "camSpinner:" << ofToString(camSpinner) << ",index:" << ofToString(abs(camSpinner) % target.size()) << endl;
+        cout << "viewCount.size(" << target.size() << "), " << "camSpinner:" << ofToString(camSpinner) << ",index:" << ofToString(abs(camSpinner) % target.size()) << endl;
         currentIdx = abs(camSpinner) % target.size();
         tweenNow(currentIdx, time);
         isSettingCam = false;

@@ -38,6 +38,7 @@ public:
     void zeroView(float time=2.0);
     void nextView(float time=2.0);
     void prevView(float time=2.0);
+    void gotoSelectView(int index, float time=2.0);
     
     void information();
     
